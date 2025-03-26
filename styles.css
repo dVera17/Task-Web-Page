@@ -1,0 +1,502 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    height: 4rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e4e4e7;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.container {
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.logo a {
+    color: #6D28D9;
+    text-decoration: none;
+}
+
+.music-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #6D28D9;
+}
+
+header nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+@media (min-width: 640px) {
+    header nav ul {
+        gap: 1.5rem;
+    }
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #52525b;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    padding-bottom: 0.25rem;
+}
+
+header nav ul li a:hover {
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    header nav ul {
+        gap: 0.75rem;
+    }
+
+    header nav ul li a {
+        font-size: 0.75rem;
+    }
+}
+
+/* Sección principal (Hero) */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 4rem 2rem;
+    background-image: linear-gradient(to bottom, #faf5ff, #fbf8ff, #fcfaff, #fdfdff, #ffffff);
+    gap: 2rem;
+    flex-direction: column;
+    /* Por defecto en móvil, apilamos verticalmente */
+}
+
+/* Contenedor izquierdo con texto */
+.container-left-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 100%;
+    text-align: center;
+    /* Centrado en móvil */
+}
+
+/* Título principal */
+.main-title {
+    font-size: 2rem;
+    /* Tamaño más pequeño para móvil */
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+/* Descripción */
+.main-description {
+    color: #64748b;
+    /* lightslategray más preciso en hex */
+    font-size: 1rem;
+    /* Tamaño más pequeño para móvil */
+    line-height: 1.5;
+    max-width: 100%;
+}
+
+/* Contenedor de imagen */
+picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Imagen */
+picture img {
+    width: 100%;
+    max-width: 500px;
+    /* Limitar tamaño en móvil */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Contenedor de botones */
+.container-card-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    /* Centrado en móvil */
+    flex-wrap: wrap;
+    /* Permite que los botones se envuelvan si es necesario */
+}
+
+/* Estilos de botones */
+.btn-primary,
+.btn-secondary {
+    height: 2.5rem;
+    padding: 0 1.5rem;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #d1d5db;
+    /* lightgray más preciso */
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    min-width: 120px;
+    /* Asegura que los botones tengan un ancho mínimo */
+}
+
+.btn-primary {
+    background-color: #663399;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: rgba(102, 51, 153, 0.9);
+}
+
+.btn-secondary {
+    background-color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(243, 244, 246, 0.9);
+}
+
+/* Media queries para tablets */
+@media (min-width: 768px) {
+    .main-container {
+        padding: 5rem 3rem;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .main-description {
+        font-size: 1.125rem;
+    }
+
+    picture img {
+        max-width: 600px;
+    }
+}
+
+/* Media queries para pantallas medianas */
+@media (min-width: 1024px) {
+    .main-container {
+        flex-direction: row;
+        /* Cambia a horizontal en pantallas más grandes */
+        justify-content: space-between;
+        padding: 0 4rem;
+    }
+
+    .container-left-card {
+        text-align: left;
+        /* Alineación a la izquierda en desktop */
+        max-width: 50%;
+    }
+
+    .main-title {
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+
+    .main-description {
+        font-size: 1.25rem;
+        width: 90%;
+    }
+
+    .container-card-buttons {
+        justify-content: flex-start;
+        /* Alineación a la izquierda en desktop */
+    }
+
+    picture {
+        width: 50%;
+    }
+
+    picture img {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+/* Media queries para pantallas grandes */
+@media (min-width: 1280px) {
+    .main-container {
+        padding: 0 6rem;
+    }
+
+    .main-title {
+        font-size: 3.3rem;
+        line-height: 3.5rem;
+    }
+
+    picture img {
+        max-width: 37rem;
+    }
+}
+
+section {
+    width: 100%;
+    padding: 5rem 1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+}
+
+.top-card {
+    max-width: 900px;
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.info-tip {
+    display: inline-block;
+    background-color: #F3E8FF;
+    color: #7E22CE;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.main-title-section {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+}
+
+.card-description {
+    color: #6B7280;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bottom-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1280px;
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+.individual-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.ic-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    background-color: #F3E8FF;
+    border-radius: 9999px;
+    margin-bottom: 0.5rem;
+}
+
+.ic-top svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #581C87;
+}
+
+.individual-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.bc-description {
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Sección de Testimonios */
+.testimonials-section {
+    width: 100%;
+    padding: 5rem 1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Encabezado de testimonios */
+.testimonials-header {
+    max-width: 900px;
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+/* Contenedor de tarjetas de testimonios */
+.testimonials-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1280px;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+    .testimonials-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .testimonials-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tarjeta de testimonio individual */
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+/* Encabezado de la tarjeta de testimonio */
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-icon {
+    color: #6D28D9;
+}
+
+.message-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Estrellas de calificación */
+.rating {
+    display: flex;
+    color: #F59E0B;
+    /* Color amarillo para las estrellas */
+}
+
+/* Texto del testimonio */
+.testimonial-text {
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Información del estudiante */
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.student-image img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    object-fit: cover;
+}
+
+.student-details h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.student-details p {
+    font-size: 0.75rem;
+    color: #6B7280;
+    margin: 0;
+}
+
+footer {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    font-size: .9rem;
+    justify-content: center;
+    align-items: center;
+    color: #71717A;
+    border-top: 1px solid #e4e4e7;
+}
+
+@media (min-width: 768px) {
+    .bc-description {
+        font-size: 1rem;
+    }
+
+    .card-description {
+        font-size: 1.125rem;
+    }
+
+    .bottom-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 640px) {
+    .main-title-section {
+        font-size: 3rem;
+    }
+}
