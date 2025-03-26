@@ -10,18 +10,21 @@ header {
     top: 0;
     z-index: 50;
     width: 100%;
-    height: 4rem;
     background-color: rgba(255, 255, 255, 0.95);
     border-bottom: 1px solid #e4e4e7;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 .container {
     max-width: 1400px;
-    height: 100%;
+    height: 4rem;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,6 +36,7 @@ header {
     gap: 0.5rem;
     font-size: 1.25rem;
     font-weight: 700;
+    z-index: 60;
 }
 
 .logo a {
@@ -46,52 +50,108 @@ header {
     color: #6D28D9;
 }
 
-header nav ul {
+.mobile-menu-button {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 60;
+}
+
+.mobile-menu-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #6D28D9;
+}
+
+.desktop-nav {
+    display: none;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    z-index: 50;
+    padding-top: 5rem;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav ul {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 1.5rem;
     list-style: none;
+    padding: 0 2rem;
 }
 
-@media (min-width: 640px) {
-    header nav ul {
-        gap: 1.5rem;
-    }
-}
-
-header nav ul li a {
+.mobile-nav ul li a {
+    display: block;
     text-decoration: none;
     color: #52525b;
-    font-size: 0.875rem;
+    font-size: 1.25rem;
     font-weight: 500;
+    padding: 0.5rem 0;
     transition: all 0.2s ease;
-    padding-bottom: 0.25rem;
 }
 
-header nav ul li a:hover {
-    color: #000;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.mobile-nav ul li a:hover {
+    color: #6D28D9;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 768px) {
     .container {
-        padding: 0 1rem;
+        padding: 0 2rem;
     }
 
-    .logo {
-        font-size: 1.1rem;
+    .mobile-menu-button {
+        display: none;
     }
 
-    header nav ul {
-        gap: 0.75rem;
+    .desktop-nav {
+        display: block;
     }
 
-    header nav ul li a {
-        font-size: 0.75rem;
+    .desktop-nav ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+    }
+
+    .desktop-nav ul li a {
+        text-decoration: none;
+        color: #52525b;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        padding-bottom: 0.25rem;
+    }
+
+    .desktop-nav ul li a:hover {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 4px;
     }
 }
 
-/* Sección principal (Hero) */
+@media (min-width: 1024px) {
+    .desktop-nav ul {
+        gap: 2rem;
+    }
+
+    .desktop-nav ul li a {
+        font-size: 1rem;
+    }
+}
+
 .main-container {
     display: flex;
     justify-content: center;
@@ -101,23 +161,18 @@ header nav ul li a:hover {
     background-image: linear-gradient(to bottom, #faf5ff, #fbf8ff, #fcfaff, #fdfdff, #ffffff);
     gap: 2rem;
     flex-direction: column;
-    /* Por defecto en móvil, apilamos verticalmente */
 }
 
-/* Contenedor izquierdo con texto */
 .container-left-card {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     max-width: 100%;
     text-align: center;
-    /* Centrado en móvil */
 }
 
-/* Título principal */
 .main-title {
     font-size: 2rem;
-    /* Tamaño más pequeño para móvil */
     line-height: 1.2;
     font-weight: 700;
 }
@@ -125,41 +180,32 @@ header nav ul li a:hover {
 /* Descripción */
 .main-description {
     color: #64748b;
-    /* lightslategray más preciso en hex */
     font-size: 1rem;
-    /* Tamaño más pequeño para móvil */
     line-height: 1.5;
     max-width: 100%;
 }
 
-/* Contenedor de imagen */
 picture {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-/* Imagen */
 picture img {
     width: 100%;
     max-width: 500px;
-    /* Limitar tamaño en móvil */
     height: auto;
     border-radius: 10px;
     object-fit: cover;
 }
 
-/* Contenedor de botones */
 .container-card-buttons {
     display: flex;
     gap: 0.75rem;
     justify-content: center;
-    /* Centrado en móvil */
     flex-wrap: wrap;
-    /* Permite que los botones se envuelvan si es necesario */
 }
 
-/* Estilos de botones */
 .btn-primary,
 .btn-secondary {
     height: 2.5rem;
@@ -167,13 +213,11 @@ picture img {
     border-radius: 7px;
     outline: none;
     border: 1px solid #d1d5db;
-    /* lightgray más preciso */
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     min-width: 120px;
-    /* Asegura que los botones tengan un ancho mínimo */
 }
 
 .btn-primary {
@@ -193,7 +237,6 @@ picture img {
     background-color: rgba(243, 244, 246, 0.9);
 }
 
-/* Media queries para tablets */
 @media (min-width: 768px) {
     .main-container {
         padding: 5rem 3rem;
@@ -212,18 +255,15 @@ picture img {
     }
 }
 
-/* Media queries para pantallas medianas */
 @media (min-width: 1024px) {
     .main-container {
         flex-direction: row;
-        /* Cambia a horizontal en pantallas más grandes */
         justify-content: space-between;
         padding: 0 4rem;
     }
 
     .container-left-card {
         text-align: left;
-        /* Alineación a la izquierda en desktop */
         max-width: 50%;
     }
 
@@ -239,7 +279,6 @@ picture img {
 
     .container-card-buttons {
         justify-content: flex-start;
-        /* Alineación a la izquierda en desktop */
     }
 
     picture {
@@ -252,7 +291,6 @@ picture img {
     }
 }
 
-/* Media queries para pantallas grandes */
 @media (min-width: 1280px) {
     .main-container {
         padding: 0 6rem;
@@ -359,7 +397,6 @@ section {
     margin: 0 auto;
 }
 
-/* Sección de Testimonios */
 .testimonials-section {
     width: 100%;
     padding: 5rem 1rem;
@@ -369,7 +406,6 @@ section {
     align-items: center;
 }
 
-/* Encabezado de testimonios */
 .testimonials-header {
     max-width: 900px;
     text-align: center;
@@ -377,7 +413,6 @@ section {
     padding: 0 1rem;
 }
 
-/* Contenedor de tarjetas de testimonios */
 .testimonials-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -399,7 +434,6 @@ section {
     }
 }
 
-/* Tarjeta de testimonio individual */
 .testimonial-card {
     display: flex;
     flex-direction: column;
@@ -409,7 +443,6 @@ section {
     background-color: white;
 }
 
-/* Encabezado de la tarjeta de testimonio */
 .testimonial-header {
     display: flex;
     align-items: center;
@@ -426,14 +459,11 @@ section {
     height: 1.25rem;
 }
 
-/* Estrellas de calificación */
 .rating {
     display: flex;
     color: #F59E0B;
-    /* Color amarillo para las estrellas */
 }
 
-/* Texto del testimonio */
 .testimonial-text {
     color: #6B7280;
     font-size: 0.875rem;
@@ -442,7 +472,6 @@ section {
     flex-grow: 1;
 }
 
-/* Información del estudiante */
 .student-info {
     display: flex;
     align-items: center;
